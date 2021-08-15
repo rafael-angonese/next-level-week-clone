@@ -1,20 +1,15 @@
+import { useEffect, useState } from "react";
 import {
   InputGroup,
   Input as ChakraInput,
   InputProps,
-  InputGroupProps,
   InputLeftElement,
 } from "@chakra-ui/react";
 
-import { useState } from "react";
 import NameIcon from "../NameIcon";
 import EmailIcon from "../EmailIcon";
 
-interface Props extends InputProps {
-  inputGroup?: InputGroupProps;
-}
-
-export default function Input({ inputGroup, ...rest }: Props): JSX.Element {
+export default function Input({ ...rest }: InputProps): JSX.Element {
   const [isFocus, setIsFocus] = useState(false);
 
   const icons = {
@@ -31,19 +26,35 @@ export default function Input({ inputGroup, ...rest }: Props): JSX.Element {
   }
 
   return (
-    <InputGroup {...inputGroup}>
+    <InputGroup
+      _notFirst={{
+        marginTop: "1rem",
+      }}
+    >
       <InputLeftElement
-        border={0}
-        height="68px"
-        marginLeft={3}
+        height={rest.height}
+        marginLeft={5}
+        textAlign="center"
         children={icons[rest.name]}
       />
       <ChakraInput
-        layerStyle="input"
-        bgColor="black.50"
+        bg="black.50"
         size="lg"
-        paddingLeft={16}
+        paddingLeft="4.5rem"
         focusBorderColor="purple.50"
+        variant="filled"
+        backgroundColor="black.800"
+        color="white.50"
+        fontSize="1.52rem"
+        _placeholder={{
+          fontSize: "1.52rem",
+        }}
+        _hover={null}
+        _focus={{
+          bgColor: "none",
+          borderWidth: "2px",
+          borderColor: "purple.50",
+        }}
         onBlur={handleInputBlur}
         onFocus={handleInputFocus}
         {...rest}
