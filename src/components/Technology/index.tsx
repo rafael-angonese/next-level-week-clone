@@ -31,7 +31,7 @@ export default function Technology({
     try {
       setIsSubmitting(true);
       // await submit({ throwOnError: true });
-      push(`/obrigado/${techName}`);
+      push(`/thanks/${techName}`);
       addToast({
         status: "success",
         description: `Trilha ${tracks[techName]} selecionada com sucesso!`,
