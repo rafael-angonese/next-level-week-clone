@@ -15,7 +15,7 @@ interface Props {
 }
 
 export default function TicketUrl({ username }: Props): JSX.Element {
-  const URL = `${baseURL}/convite/${username}`;
+  const URL = `${baseURL}/invite/${username}`;
 
   const { onCopy } = useClipboard(URL);
 
