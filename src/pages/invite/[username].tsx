@@ -25,10 +25,11 @@ import FormButton from "../../components/FormButton";
 
 import { useSubscribe } from "../../hooks/SubscribeContext";
 import subscribeValidationSchema from "../../lib/validationSchemas/subscribe";
+import track from "../track";
 
 interface IProps {
   // account: IAccount;
-  track: string;
+  // track: string;
   ticketURL: string;
 }
 
@@ -40,11 +41,12 @@ interface ISubscribeData {
 
 export default function TicketAccept({
   // account,
-  track,
+  // track,
   ticketURL,
 }: IProps): JSX.Element {
   const { subscribe } = useSubscribe();
 
+  const track = 'react'
   const account = {
     name: "Rafael Angones",
     username: "rafael-angonese",
