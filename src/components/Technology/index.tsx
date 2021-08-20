@@ -2,9 +2,9 @@ import { Box, Button, Flex, Image, Text, Container } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-import useTrack from "../../hooks/queries/useTrack";
 import tracks from "../../utils/tracks";
 import useToast from "../../hooks/useToast";
+// import api from "../../services/axios";
 
 interface Props {
   techName: string;
@@ -25,12 +25,10 @@ export default function Technology({
   const { addToast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { submit, isLoading } = useTrack(techName);
-
   async function handleSelectedTech(): Promise<void> {
     try {
       setIsSubmitting(true);
-      // await submit({ throwOnError: true });
+      // const response = await api.post("/user/track", { tech: techName});
       push(`/thanks/${techName}`);
       addToast({
         status: "success",
@@ -50,7 +48,6 @@ export default function Technology({
       <Flex
         flexDirection="column"
         bgColor="black.100"
-        minW="405px"
         w="100%"
         p="2rem"
         borderRadius="md"
@@ -77,7 +74,7 @@ export default function Technology({
         <Button
           type="submit"
           isLoading={isSubmitting}
-          disabled={isLoading}
+          disabled={isSubmitting}
           _disabled={{
             opacity: 0.2,
           }}

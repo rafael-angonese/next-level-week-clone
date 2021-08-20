@@ -1,4 +1,12 @@
-import { Flex, Heading, Text, Grid, GridItem, Image } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Box,
+  Text,
+  SimpleGrid,
+  GridItem,
+  Image,
+} from "@chakra-ui/react";
 import Head from "next/head";
 
 import Technology from "../components/Technology";
@@ -143,18 +151,13 @@ function Track(): JSX.Element {
           content="https://nextlevelweek.com/og/next-level-week.png"
         />
       </Head>
-      <Flex
-        as="header"
-        flexDirection="column"
-        maxW="1280px"
-        w="100%"
-        margin="0 auto"
-      >
+
+      <Box m={100}>
         <Flex alignItems="center" mt="4.75rem" mb="8rem">
           <Heading fontSize="2.74rem" mr="3.75rem">
             Trilhas <br /> disponíveis
           </Heading>
-          <Text fontSize="1.2rem" color="grey.100" w="700px">
+          <Text fontSize="1.2rem" color="grey.100">
             <span style={{ color: "#04e168", fontWeight: "bold" }}>
               Tenha foco:
             </span>{" "}
@@ -163,14 +166,14 @@ function Track(): JSX.Element {
             superficial é o que vai te impedir de alcançar seus objetivos.
           </Text>
         </Flex>
-        <Grid as="section" templateColumns="repeat(3, 1fr)">
+        <SimpleGrid as="section" columns={{ sm: 1, md: 1, lg: 3 }}>
           {tracks.map((track) => (
             <GridItem key={track.techName}>
               <Technology {...track} />
             </GridItem>
           ))}
-        </Grid>
-      </Flex>
+        </SimpleGrid>
+      </Box>
     </>
   );
 }
