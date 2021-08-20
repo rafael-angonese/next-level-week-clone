@@ -13,9 +13,8 @@ export default function FormButton({
   return (
     <ButtonGroup
       zIndex={1}
-      minW="600px"
       width="100%"
-      padding="1.75rem 2.25rem"
+      padding="1.75rem 0rem"
       transition="filter 200ms"
       _hover={{
         filter: "brightness(1.1)",

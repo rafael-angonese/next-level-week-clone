@@ -10,14 +10,15 @@ import {
   FormControl,
   Box,
   FormErrorMessage,
-} from '@chakra-ui/react';
-import { Formik, Field, Form, FormikProps, FormikHelpers } from 'formik';
-import Head from 'next/head';
+  SimpleGrid,
+} from "@chakra-ui/react";
+import { Formik, Field, Form, FormikProps, FormikHelpers } from "formik";
+import Head from "next/head";
 
-import Input from '../components/Input';
-import FormButton from '../components/FormButton';
-import subscribeValidationSchema from '../lib/validationSchemas/subscribe';
-import { useSubscribe } from '../hooks/SubscribeContext';
+import Input from "../components/Input";
+import FormButton from "../components/FormButton";
+import subscribeValidationSchema from "../lib/validationSchemas/subscribe";
+import { useSubscribe } from "../hooks/SubscribeContext";
 
 interface ISubscribeData {
   name: string;
@@ -91,73 +92,72 @@ export default function Subscribe(): JSX.Element {
           content="https://nextlevelweek.com/og/next-level-week.png"
         />
       </Head>
-      <Flex layerStyle="base" flexDirection="row" justifyContent="space-evenly">
-        <Center>
-          <Flex
-            flexDirection="column"
-            maxW="754px"
-            w="100%"
-            marginRight="4.74rem"
+      <SimpleGrid columns={{ sm: 1, md: 1, lg: 2 }} p="100" spacing={10}>
+        <Flex flexDirection="column" maxW="754px" w="100%">
+          <Image
+            src="/assets/images/nlw-logo.svg"
+            width="320px"
+            alt="Nlw Logo"
+            mb="3rem"
+          />
+          <Text
+            as="h1"
+            fontWeight="bold"
+            color="grey.50"
+            fontSize="6rem"
+            marginTop="1.72rem"
+            lineHeight="5.75rem"
           >
-            <Image
-              src="/assets/images/nlw-logo.svg"
-              width="320px"
-              alt="Nlw Logo"
-              mb="3rem"
-            />
-            <Text
-              as="h1"
-              fontWeight="bold"
-              color="grey.50"
-              fontSize="6rem"
-              marginTop="1.72rem"
-              lineHeight="5.75rem"
-            >
-              Avance para <br /> o próximo nível
-              <span style={{ color: '#04e168' }}>.</span>
-            </Text>
-            <Text color="grey.50" fontSize="2rem" mt="1.75rem">
-              Um evento para dar o próximo passo na sua evolução como
-              programadora ou programador.
-            </Text>
-            <Flex
-              justifyContent="space-between"
-              alignItems="center"
-              fontSize="xl"
-              color="white.100"
-              fontWeight="bold"
-              marginTop="5rem"
-            >
-              <Flex alignItems="center">
-                <Image src="/assets/icons/data-icon.svg" />
-                <Text marginLeft="1rem">
-                  <span style={{ color: '#04D361' }}>19 a 25</span> <br /> de
-                  Abril
-                </Text>
-              </Flex>
-              <Flex alignItems="center">
-                <Image src="/assets/icons/free-and-online-icon.svg" />
-                <Text marginLeft="1rem">
-                  <span style={{ color: '#04D361' }}>100%</span> online <br /> e
-                  gratuito
-                </Text>
-              </Flex>
-              <Flex alignItems="center">
-                <Image src="/assets/icons/edition-icon.svg" />
-                <Text marginLeft="1rem">
-                  Quinta edição <br /> conteúdo{' '}
-                  <span style={{ color: '#04D361' }}>inédito</span>
-                </Text>
-              </Flex>
+            Avance para <br /> o próximo nível
+            <span style={{ color: "#04e168" }}>.</span>
+          </Text>
+          <Text color="grey.50" fontSize="2rem" mt="1.75rem">
+            Um evento para dar o próximo passo na sua evolução como programadora
+            ou programador.
+          </Text>
+
+          <SimpleGrid
+            columns={{ sm: 1, md: 3 }}
+            fontSize="xl"
+            color="white.100"
+            fontWeight="bold"
+            marginTop="5rem"
+            spacing={8}
+          >
+            <Flex alignItems="center">
+              <Image src="/assets/icons/data-icon.svg" />
+              <Text marginLeft="1rem">
+                <span style={{ color: "#04D361" }}>19 a 25</span> <br /> de
+                Abril
+              </Text>
             </Flex>
-          </Flex>
-          <Formik
-            onSubmit={(values, actions) => handleSubmit(values, actions)}
-            initialValues={{ name: '', email: '', acceptTerms: false }}
-            validationSchema={subscribeValidationSchema}
-          >
-            {(props: FormikProps<ISubscribeData>) => (
-              <Form>
+
+            <Flex alignItems="center">
+              <Image src="/assets/icons/free-and-online-icon.svg" />
+              <Text marginLeft="1rem">
+                <span style={{ color: "#04D361" }}>100%</span> online <br /> e
+                gratuito
+              </Text>
+            </Flex>
+
+            <Flex alignItems="center">
+              <Image src="/assets/icons/edition-icon.svg" />
+              <Text marginLeft="1rem">
+                Quinta edição <br /> conteúdo{" "}
+                <span style={{ color: "#04D361" }}>inédito</span>
+              </Text>
+            </Flex>
+          </SimpleGrid>
+        </Flex>
+
+        <Formik
+          onSubmit={(values, actions) => handleSubmit(values, actions)}
+          initialValues={{ name: "", email: "", acceptTerms: false }}
+          validationSchema={subscribeValidationSchema}
+        >
+          {(props: FormikProps<ISubscribeData>) => (
+            <Form>
+              <Center>
                 <Flex
                   flexDirection="column"
                   maxW="600px"
@@ -283,11 +283,11 @@ export default function Subscribe(): JSX.Element {
                     </Flex>
                   </Flex>
                 </Flex>
-              </Form>
-            )}
-          </Formik>
-        </Center>
-      </Flex>
+              </Center>
+            </Form>
+          )}
+        </Formik>
+      </SimpleGrid>
     </>
   );
 }
