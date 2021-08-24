@@ -92,7 +92,7 @@ export default function Subscribe(): JSX.Element {
           content="https://nextlevelweek.com/og/next-level-week.png"
         />
       </Head>
-      <SimpleGrid columns={{ sm: 1, md: 1, lg: 2 }} p="100" spacing={10}>
+      <SimpleGrid columns={{ sm: 1, md: 1, lg: 2 }} p="5%" spacing={10}>
         <Flex flexDirection="column" maxW="754px" w="100%">
           <Image
             src="/assets/images/nlw-logo.svg"
